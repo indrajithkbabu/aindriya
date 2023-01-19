@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:sizer/sizer.dart';
 
 class ScreenInvoiceDetails extends StatefulWidget {
   const ScreenInvoiceDetails({Key? key}) : super(key: key);
@@ -14,7 +15,8 @@ class _ScreenInvoiceDetailsState extends State<ScreenInvoiceDetails> {
   Widget build(BuildContext context) {
     var _height = MediaQuery.of(context).size.height;
     var _width = MediaQuery.of(context).size.width;
-    bool hide = false;
+    
+     bool isSmall = _height < 600;
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(
@@ -53,8 +55,7 @@ class _ScreenInvoiceDetailsState extends State<ScreenInvoiceDetails> {
           child: Column(
             children: [
               Padding(
-                padding:
-                    const EdgeInsets.only(left: 20.0, right: 20, bottom: 10),
+                padding: EdgeInsets.only(left: 6.w, right: 5.w, bottom: 1.h),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: const [
@@ -70,197 +71,210 @@ class _ScreenInvoiceDetailsState extends State<ScreenInvoiceDetails> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(left: 10.0, right: 10),
+                padding: EdgeInsets.only(left: 2.h, right: 2.h),
                 child: Container(
+                  height: 20.h,
                   width: double.infinity,
-                  height: _height * .32,
-                  decoration:
-                      BoxDecoration(borderRadius: BorderRadius.circular(25)),
-                  child: Column(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(25),
+                    color: Colors.white12,
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      Container(
-                        height: _height * .18,
-                        decoration: BoxDecoration(
-                            color: Colors.white12,
-                            borderRadius: BorderRadius.circular(25)),
-                        child: Row(
+                      Padding(
+                        padding: EdgeInsets.only(
+                          left: 2.h,
+                        ),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Column(
-                              children: [
-                                Padding(
-                                  padding: EdgeInsets.only(
-                                      left: 20.0, right: 10, top: 30),
-                                  child: Text("Invoice Amount of",
-                                      style: TextStyle(
-                                        fontSize: 18,
-                                      )),
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.only(
-                                      left: 30.0, right: 10, top: 10),
-                                  child: Container(
-                                    height: _height * .09,
-                                    width: _width * .35,
-                                    decoration: BoxDecoration(
-                                        color: Colors.white54,
-                                        borderRadius:
-                                            BorderRadius.circular(15)),
-                                    child: Center(
-                                        child: Text(
-                                      "1850 /-",
-                                      style: TextStyle(
-                                          fontSize: 35,
-                                          color: Colors.blue[900],
-                                          fontWeight: FontWeight.w600),
-                                    )),
-                                  ),
-                                )
-                              ],
-                            ),
                             Padding(
-                              padding: const EdgeInsets.only(top: 8, bottom: 8),
-                              child: VerticalDivider(
-                                color: Colors.white54,
-                                thickness: 1,
-                              ),
+                              padding: EdgeInsets.only(bottom: 1.5.h),
+                              child: Text("Invoice Amount of",
+                                  style: TextStyle(
+                                    fontSize: 18,
+                                  )),
                             ),
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: const [
-                                Padding(
-                                  padding: EdgeInsets.only(
-                                      left: 20.0, right: 10, top: 30),
-                                  child: Text("Invoice Number",
-                                      style: TextStyle(
-                                        fontSize: 18,
-                                      )),
-                                ),
-                                Padding(
-                                  padding: EdgeInsets.only(
-                                      left: 20.0, right: 10, top: 6),
-                                  child: Text("487555555",
-                                      style: TextStyle(
-                                          fontSize: 25,
-                                          fontWeight: FontWeight.bold)),
-                                ),
-                                Padding(
-                                  padding: EdgeInsets.only(
-                                      left: 20.0, right: 10, top: 8),
-                                  child: Text("Invoice Date",
-                                      style: TextStyle(
-                                        fontSize: 18,
-                                      )),
-                                ),
-                                Padding(
-                                  padding: EdgeInsets.only(
-                                      left: 20.0, right: 10, top: 6),
-                                  child: Text("26 Dec, 2022",
-                                      style: TextStyle(
-                                          fontSize: 25,
-                                          fontWeight: FontWeight.bold)),
-                                ),
-                              ],
+                            Container(
+                              height: _height * .09,
+                              width: _width * .35,
+                              decoration: BoxDecoration(
+                                  color: Colors.white54,
+                                  borderRadius: BorderRadius.circular(15)),
+                              child: Center(
+                                  child: Text(
+                                "1850 /-",
+                                style: TextStyle(
+                                    fontSize: 35,
+                                    color: Colors.blue[900],
+                                    fontWeight: FontWeight.w600),
+                              )),
                             ),
                           ],
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsets.only(
-                          left: 10.0,
-                          right: 10,
-                        ),
-                        child: Divider(
+                        padding: EdgeInsets.only(top: 8, bottom: 8),
+                        child: VerticalDivider(
                           color: Colors.white54,
                           thickness: 1,
                         ),
                       ),
-                      Container(
-                        height: _height * .12,
-                        decoration: BoxDecoration(
-                            color: Colors.white12,
-                            borderRadius: BorderRadius.circular(25)),
-                        child: Column(
-                          children: [
-                            Row(
-                              children: const [
-                                Padding(
-                                  padding: EdgeInsets.only(
-                                      left: 36.0, right: 10, top: 5),
-                                  child: Text("Requested to",
-                                      style: TextStyle(
-                                        fontSize: 18,
-                                      )),
+                      Column(
+                        children: [
+                          Container(
+                            height: 9.h,
+                            width: 40.w,
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text("Invoice Number",
+                                    style: TextStyle(
+                                      fontSize: 18,
+                                    )),
+                                SizedBox(
+                                  height: .5.h,
                                 ),
+                                Text("487555555",
+                                    style: TextStyle(
+                                        fontSize: 25,
+                                        fontWeight: FontWeight.bold)),
                               ],
                             ),
-                            SizedBox(
-                              height: _height * .015,
+                          ),
+                          SizedBox(
+                            height: .5.h,
+                          ),
+                          Container(
+                            height: 9.h,
+                            width: 40.w,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text("Invoice Date",
+                                    style: TextStyle(
+                                      fontSize: 18,
+                                    )),
+                                SizedBox(
+                                  height: .5.h,
+                                ),
+                                Text("26 Dec, 2022",
+                                    style: TextStyle(
+                                        fontSize: 25,
+                                        fontWeight: FontWeight.bold)),
+                              ],
                             ),
+                          ),
+                        ],
+                      )
+                    ],
+                  ),
+                ),
+              ), Padding(
+                padding:  EdgeInsets.only(left: 2.h,right: 2.h),
+                child: Divider(
+                            color: Colors.white54,
+                            thickness: 1,
+                          ),
+              ),
+               Padding(
+                padding: EdgeInsets.only(left: 2.h, right: 2.h),
+                child: Container(
+                  height: 15.h,
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(25),
+                    color: Colors.white12,
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.only(
+                          left: 2.h,
+                        ),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
                             Padding(
-                              padding:
-                                  const EdgeInsets.only(left: 32.0, right: 10),
+                              padding: EdgeInsets.only(bottom: 1.5.h,left: 2.h),
+                              child: Text("Requested to",
+                                  style: TextStyle(
+                                    fontSize: 18,
+                                  )),
+                            ),
+                            
+                            Padding(
+                              padding:  EdgeInsets.only(left: 2.h),
                               child: Row(
                                 children: [
-                                  CircleAvatar(
-                                    radius: 27,
-                                    backgroundImage: AssetImage(
-                                        "assets/images/MyG_Company_Logo.jpg"),
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.only(left: 18),
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        const Text("MyG Kakkanad",
-                                            style: TextStyle(
-                                                fontSize: 22,
-                                                fontWeight: FontWeight.bold)),
-                                        SizedBox(
-                                          height: _height * .005,
-                                        ),
-                                        const Text("+91 7539517753",
-                                            style: TextStyle(
-                                              fontSize: 18,
-                                            )),
-                                      ],
+                                   CircleAvatar(
+                                      radius: 27,
+                                      backgroundImage: AssetImage(
+                                          "assets/images/MyG_Company_Logo.jpg"),
                                     ),
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.only(left: 80),
-                                    child: Icon(
-                                      Icons.call,
-                                      color: Colors.blue[900],
-                                      size: 35,
+                                      Padding(
+                                      padding:  EdgeInsets.only(left: 2.h),
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          const Text("MyG Kakkanad",
+                                              style: TextStyle(
+                                                  fontSize: 22,
+                                                  fontWeight: FontWeight.bold)),
+                                          SizedBox(
+                                            height: _height * .005,
+                                          ),
+                                          const Text("+91 7539517753",
+                                              style: TextStyle(
+                                                fontSize: 18,
+                                              )),
+                                          
+                                        ],
+                                      ),
                                     ),
-                                  )
+                                    SizedBox(width: 20.w,),
+                                         Icon(
+                                           Icons.call,
+                                           color: Colors.blue[900],
+                                           size: 35,
+                                         )
+
                                 ],
                               ),
                             )
                           ],
                         ),
                       ),
+                     
+                     
                     ],
                   ),
                 ),
               ),
-              SizedBox(
-                height: _height * .01,
-              ),
-              Padding(
+              SizedBox(height: 1.h,),
+
+  Padding(
                 padding: const EdgeInsets.only(left: 10, right: 10),
                 child: Container(
-                  height: _height * .14,
+                  height:20.h,
+                  // _height * .14,
                   decoration: BoxDecoration(
                       color: Colors.white12,
                       borderRadius: BorderRadius.circular(25)),
                   child: Column(
+                    
                     children: [
                       Row(
-                        children: const [
+                        children:  [
                           Padding(
                             padding:
-                                EdgeInsets.only(left: 36.0, right: 10, top: 5),
+                                EdgeInsets.only(left: 36.0, right: 10, top: 3.h),
                             child: Text("Request status",
                                 style: TextStyle(
                                   fontSize: 18,
@@ -273,6 +287,7 @@ class _ScreenInvoiceDetailsState extends State<ScreenInvoiceDetails> {
                       ),
                       Flexible(
                         child: Container(
+
                             decoration: BoxDecoration(
                                 color: Colors.transparent,
                                 borderRadius: BorderRadius.circular(25)),
@@ -311,37 +326,55 @@ class _ScreenInvoiceDetailsState extends State<ScreenInvoiceDetails> {
                   ),
                 ),
               ),
-              const Padding(
-                padding: EdgeInsets.only(left: 20.0, right: 20, top: 10),
+              Padding(
+                padding:  EdgeInsets.only(left: 2.h,right: 2.h),
                 child: Divider(
-                  color: Colors.white54,
-                  thickness: 1,
-                ),
+                            color: Colors.white54,
+                            thickness: 1,
+                          ),
               ),
               Padding(
                 padding: const EdgeInsets.only(left: 10, right: 10),
                 child: Container(
-                  height: _height * .66,
-                  width: double.infinity,
+                  height: 100.h,
+                  // _height * .14,
+                  decoration: BoxDecoration(
+                      color: Colors.white12,
+                      borderRadius: BorderRadius.circular(25)),
                   child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                    
                     children: [
-                      Padding(
-                        padding: EdgeInsets.only(
-                            left: 10.0, right: 10, top: 5, bottom: 10),
-                        child: Text("Invoice copy",
-                            style: TextStyle(
-                              fontSize: 18,
-                            )),
+                      Row(
+                        children:  [
+                          Padding(
+                            padding:
+                                EdgeInsets.only(left: 36.0, right: 10, top: 1.h),
+                            child: Text("Invoice copy",
+                                style: TextStyle(
+                                  fontSize: 18,
+                                )),
+                          ),
+                        ],
                       ),
-                      Image.asset("assets/images/image 3.png")
+                      SizedBox(
+                        height: .01.h,
+                      ),
+                      Image.asset("assets/images/image 3.png",fit: BoxFit.fill,)
+                     
                     ],
                   ),
+
                 ),
-              )
+              ),
+              
+              
+              
             ],
           ),
         ),
+        
+            
+  
       )),
     );
   }

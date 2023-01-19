@@ -3,12 +3,12 @@ import 'package:aindriya/view/screens/screenNotification.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:sizer/sizer.dart';
 
 class ScreenAddBill extends StatelessWidget {
   ScreenAddBill({Key? key}) : super(key: key);
 
   List<InvoiceData> invoiceDataList = [
-
     InvoiceData(
       title: "MyG Kakkanad",
       subtitle: "Invoice no: 55448815",
@@ -131,14 +131,17 @@ class ScreenAddBill extends StatelessWidget {
         ),
         elevation: 0,
         actions: [
-           IconButton(
-          onPressed: () {
-            Navigator.push(context,MaterialPageRoute(builder: (context) => ScreenNotification(),));
-          },
-          icon: Icon(Icons.arrow_forward_ios),
-          color: Colors.blue[900],
-        ),
-
+          IconButton(
+            onPressed: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => ScreenNotification(),
+                  ));
+            },
+            icon: Icon(Icons.arrow_forward_ios),
+            color: Colors.blue[900],
+          ),
         ],
         leading: IconButton(
           onPressed: () {
@@ -261,60 +264,165 @@ class ScreenAddBill extends StatelessWidget {
                       itemCount: invoiceDataList.length,
                       itemBuilder: (context, index) {
                         return Padding(
-                            padding: const EdgeInsets.only(left: 15, right: 15),
+                          padding: EdgeInsets.only(left: 1.h, right: 1.h),
+                          child: Container(
+                            height: 10.h,
+                            color: Colors.white10,
                             child: Card(
-                                color: Colors.white70,
-                                child: ListTile(
-                                  leading: CircleAvatar(
-                                    radius: 25,
-                                    backgroundImage: AssetImage(
-                                        "${invoiceDataList[index].image}"),
+                              semanticContainer: true,
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  Padding(
+                                    padding: EdgeInsets.only(left: 1.h),
+                                    child: CircleAvatar(
+                                      radius: 25,
+                                      backgroundImage: AssetImage(
+                                          "${invoiceDataList[index].image}"),
+                                    ),
                                   ),
-                                  title: Text(
-                                    invoiceDataList[index].title.toString(),
-                                    style: TextStyle(
-                                        fontSize: 16,
-                                        fontWeight: FontWeight.bold),
+                                  Container(
+                                    width: 35.w,
+                                    height: 6.h,
+                                    margin: EdgeInsets.only(
+                                      left: 1.h,
+                                    ),
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceEvenly,
+                                      children: [
+                                        Text(
+                                          invoiceDataList[index]
+                                              .title
+                                              .toString(),
+                                          style: TextStyle(
+                                              fontSize: 16,
+                                              fontWeight: FontWeight.bold),
+                                        ),
+                                        Text(invoiceDataList[index]
+                                            .subtitle
+                                            .toString()),
+                                      ],
+                                    ),
                                   ),
-                                  subtitle: Text(invoiceDataList[index]
-                                      .subtitle
-                                      .toString()),
-                                      trailing: Wrap(
-                                        spacing: 5,
-                                        children: [
-                                          Container(
-                                         height: _height*.05,
-                                          width: _width*.157,
-                                            child: Column(
-                                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                              crossAxisAlignment: CrossAxisAlignment.end,
-                                              children: [
-                                                Text(invoiceDataList[index].amount.toString(),style: TextStyle(fontSize: 18,fontWeight: FontWeight.w600,color: Colors.blue[900]),),
-                                                Text(invoiceDataList[index].date.toString())
-                                              ],
-                                              
-                                            ),
-                                          ), Container(
-                                          height: _height*.05,
-                                          width: _width*.13,
-                                            child: Column(
-                                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                              crossAxisAlignment: CrossAxisAlignment.end,
-                                              children: [
-                                                Icon(invoiceDataList[index].icon,color:(invoiceDataList[index].icondetails=="Pending" )?
+                                  Container(
+                                   
+                                    width: 18.w,
+                                    height: 6.5.h,
+                                    margin: EdgeInsets.only(
+                                      left: .5.h,
+                                    ),
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceEvenly,
+                                      children: [
+                                        Text(
+                                          invoiceDataList[index]
+                                              .amount
+                                              .toString(),
+                                          style: TextStyle(
+                                              fontSize: 16,
+                                              fontWeight: FontWeight.w600,
+                                              color: Colors.blue[900]),
+                                        ),
+                                        Text(invoiceDataList[index]
+                                            .date
+                                            .toString())
+                                      ],
+                                    ),
+                                  ),
+                                   Container(
+                                   
+                                    width: 18.w,
+                                    height: 6.5.h,
+                                    margin: EdgeInsets.only(
+                                      left: 1.5.h,
+                                    ),
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceEvenly,
+                                      children: [
+                                           Icon(invoiceDataList[index].icon,color:(invoiceDataList[index].icondetails=="Pending" )?
                                                    Colors.orange[300] : (invoiceDataList[index].icondetails=="Cancelled")?Colors.red[300] :Colors.green[400]) ,
                                                 Text(invoiceDataList[index].icondetails.toString(),
                                                 style: TextStyle(
                                                   color: (invoiceDataList[index].icondetails=="Pending" )?
                                                    Colors.orange[300] : (invoiceDataList[index].icondetails=="Cancelled")?Colors.red[300] :Colors.green[400]))
-                                                
-                                              ],
-                                              
-                                            ),
-                                          )
-                                        ],
-                                      ),
-                                )));
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        );
+                        // return Padding(
+                        //     padding: const EdgeInsets.only(left: 15, right: 15),
+                        //     child: Card(
+                        //         color: Colors.white70,
+                        //         child: ListTile(
+                        //           leading: CircleAvatar(
+                        //             radius: 25,
+                        //             backgroundImage: AssetImage(
+                        //                 "${invoiceDataList[index].image}"),
+                        //           ),
+                        //           title: Text(
+                        //             invoiceDataList[index].title.toString(),
+                        //             style: TextStyle(
+                        //                 fontSize: 16,
+                        //                 fontWeight: FontWeight.bold),
+                        //           ),
+                        //           subtitle: Text(invoiceDataList[index]
+                        //               .subtitle
+                        //               .toString()),
+                        //               trailing: Wrap(
+                        //                 spacing: 5,
+                        //                 children: [
+                        //                   Container(
+                        //                  height:5.h,
+                        //                  // _height*.05,
+                        //                   width:
+                        //                    _width*.157,
+                        //                     child: Column(
+                        //                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        //                       crossAxisAlignment: CrossAxisAlignment.end,
+                        //                       children: [
+                        //                         Text(invoiceDataList[index].amount.toString(),style: TextStyle(fontSize: 16,fontWeight: FontWeight.w600,color: Colors.blue[900]),),
+                        //                         Text(invoiceDataList[index].date.toString())
+                        //                       ],
+
+                        //                     ),
+                        //                   ), Container(
+                        //                   height:5.h,
+                        //                   //_height*.05,
+                        //                   width: 15.w,
+                        //                   //_width*.13,
+                        //                     child: Column(
+                        //                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        //                       crossAxisAlignment: CrossAxisAlignment.end,
+                        //                       children: [
+                        //                         Icon(invoiceDataList[index].icon,color:(invoiceDataList[index].icondetails=="Pending" )?
+                        //                            Colors.orange[300] : (invoiceDataList[index].icondetails=="Cancelled")?Colors.red[300] :Colors.green[400]) ,
+                        //                         Text(invoiceDataList[index].icondetails.toString(),
+                        //                         style: TextStyle(
+                        //                           color: (invoiceDataList[index].icondetails=="Pending" )?
+                        //                            Colors.orange[300] : (invoiceDataList[index].icondetails=="Cancelled")?Colors.red[300] :Colors.green[400]))
+
+                        //                       ],
+
+                        //                     ),
+                        //                   )
+                        //                 ],
+                        //               ),
+                        //         )
+                        //         )
+                        //         );
                       },
                     ),
                   ),

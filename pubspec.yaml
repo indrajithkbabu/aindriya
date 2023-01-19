@@ -31,7 +31,7 @@ dependencies:
   flutter:
     sdk: flutter
   im_stepper: ^1.0.1+1
-
+  sizer: ^2.0.15
 dev_dependencies:
 
   # The "flutter_lints" package below contains a set of recommended lints to
